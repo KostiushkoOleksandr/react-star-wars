@@ -16,10 +16,15 @@
 
   --transition: .4s;
 
+  --border-radius-medium: 5px;
   --border-radius-small: 3px;
 
   --spacing-medium: 20px;
   --spacing-large: 30px;
+  --spacing-small: 10px;
+  --spacing-ultr-small: 5px;
+
+  --margin-list: 7px;
 
   --font-family-main: sans-serif;
 

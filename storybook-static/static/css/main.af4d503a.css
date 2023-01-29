@@ -1,4 +1,4 @@
-.button {
+.UIButton_button__OSXgc {
     min-width: 100px;
     padding: 10px;
     border-radius: 3px;
@@ -15,31 +15,44 @@
     cursor: pointer;
 }
 
-.button:disabled,
-.button:disabled:hover {
+.UIButton_button__OSXgc:disabled,
+.UIButton_button__OSXgc:disabled:hover {
     background-color: transparent;
     color: var(--color-gray);
     border-color: var(--color-gray);
     cursor: auto;
 }
 
-.light {
+.UIButton_light__jwJY2 {
     border: 1px solid var(--color-black);
     color: var(--color-black);
 }
 
-.light:hover {
+.UIButton_light__jwJY2:hover {
     color: var(--color-white);
     background-color: var(--color-black);
 }
 
 
-.dark {
+.UIButton_dark__DjzT6 {
     border: 1px solid var(--color-white);
     color: var(--color-white);
 }
 
-.dark:hover {
+.UIButton_dark__DjzT6:hover {
     color: var(--color-black);
     background-color: var(--color-white);
 }
+:root {
+    --font-size-small: 14px;
+    --font-family-main: sans-serif;
+    --font-bold: 600;
+
+    --transition: .4s;
+
+    --color-gray: #9c9c9c;
+    --color-white: #fff;
+    --color-black: #000;
+}
+
+/*# sourceMappingURL=main.af4d503a.css.map*/
