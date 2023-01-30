@@ -1,10 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, Suspense} from 'react';
 import PropTypes from "prop-types";
 import {useParams} from "react-router-dom";
 
 import PersonLinkBack from "@components/PersonPage/PersonLinkBack";
 import PersonInfo from "@components/PersonPage/PersonInfo";
 import PersonPhoto from "@components/PersonPage/PersonPhoto";
+
+import UILoading from "@components/UI/UILoading";
 
 import {withErrorApi} from "@hoc/withErrorApi";
 import {getApiResource} from "@utils/network";
@@ -13,10 +15,14 @@ import {API_PERSON} from "@constans/api";
 
 import styles from './PersonPage.module.css';
 
+
+const PersonFilms = React.lazy(() => import("@components/PersonPage/PersonFilms"));
+
 const PersonPage = ({setErrorApi}) => {
     const [personInfo, setPersonInfo] = useState(null);
     const [personName, setPersonName] = useState(null);
     const [personPhoto, setPersonPhoto] = useState(null);
+    const [personFilms, setPersonFilms] = useState(null);
 
 
     const {id} = useParams();
@@ -37,8 +43,9 @@ const PersonPage = ({setErrorApi}) => {
                 ]);
 
                 setPersonName(res.name);
-
                 setPersonPhoto(getPeopleImage(id));
+
+                res.films.length && setPersonFilms(res.films);
 
                 setErrorApi(false);
             } else {
@@ -50,6 +57,11 @@ const PersonPage = ({setErrorApi}) => {
     return (
         <>
             <PersonLinkBack />
+
+            <UILoading
+                theme='white'
+            />
+
             <div className={styles.wrapper}>
                 <span className={styles.person__name}>{personName}</span>
 
@@ -60,6 +72,12 @@ const PersonPage = ({setErrorApi}) => {
                     />
 
                     {personInfo && <PersonInfo personInfo={personInfo}/>}
+
+                    {personFilms && (
+                        <Suspense fallback={<UILoading />}>
+                            <PersonFilms personFilms={personFilms} />
+                        </Suspense>
+                    ) }
                 </div>
             </div>
         </>
