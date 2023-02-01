@@ -57,11 +57,6 @@ const PersonPage = ({setErrorApi}) => {
     return (
         <>
             <PersonLinkBack />
-
-            <UILoading
-                theme='white'
-            />
-
             <div className={styles.wrapper}>
                 <span className={styles.person__name}>{personName}</span>
 
