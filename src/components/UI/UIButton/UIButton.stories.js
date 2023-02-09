@@ -1,36 +1,34 @@
-import UIButton from "./UIButton";
+import UiButton from './UiButton';
 
 export default {
-    title: 'UI-Kit/UIButton',
-    component: UIButton
-}
+	title: 'Ui-Kit/UiButton',
+	component: UiButton
+};
 
-//👇 We create a “template” of how args map to rendering
-const Template = (args) => <UIButton {...args} />;
+const Template = (args) => <UiButton {...args} />;
 
 const props = {
-    text: 'Next',
-    onClick: () => console.log('Button click'),
-    disable: false,
-    theme: 'light',
-    classes: ''
+	text: 'Hello',
+	onClick: () => console.log('Button Click'),
+	disabled: false,
+	theme: 'light',
+	classes: '',
 }
 
-//👇 Each story then reuses that template
 export const Light = Template.bind({});
 Light.args = {
-    ...props,
-    theme: 'light',
+	...props,
+	theme: 'light',
 };
 
 export const Dark = Template.bind({});
 Dark.args = {
-    ...props,
-    theme: 'dark',
+	...props,
+	theme: 'dark',
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-    ...props,
-    disable: true,
+	...props,
+	disabled: true,
 };

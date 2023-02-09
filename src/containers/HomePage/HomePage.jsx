@@ -1,14 +1,14 @@
-import React from 'react';
+import ChooseSide from '@components/HomePage/ChooseSide';
+
+// import styles from './HomePage.module.css';
 
 const HomePage = () => {
     return (
         <>
-            <h2 className='header__text'>
-                Home Page
-            </h2>
-
+            <h1 className="header__text">Choose your side</h1>
+            <ChooseSide />
         </>
-    );
-};
+    )
+}
 
 export default HomePage;

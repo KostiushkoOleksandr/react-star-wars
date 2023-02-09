@@ -1,40 +1,44 @@
-import React from 'react';
-import PropTypes from "prop-types";
-import {Link} from "react-router-dom";
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
+import UiButton from '@ui/UiButton';
 
 import styles from './PeopleNavigation.module.css';
-import UIButton from "@ui/UIButton";
 
-
-const PeopleNavigation = ({getResource, prevPage, nextPage, counterPage}) => {
-
-    const handleChangeNext = () => getResource(nextPage);
-    const handleChangePrev = () => getResource(prevPage);
+const PeopleNavigation = ({
+    getResponse,
+    prevPage,
+    nextPage,
+    counterPage
+}) => {
+    const handleChangeNext = () => getResponse(nextPage);
+    const handleChangePrev = () => getResponse(prevPage);
 
     return (
         <div className={styles.container}>
-            <Link className={styles.buttons} to={`/people/?page=${counterPage-1}`}>
-                <UIButton
-                    text='Previous'
+            <Link to={`/people/?page=${counterPage-1}`} className={styles.buttons}>
+                <UiButton
+                    text="Previous"
                     onClick={handleChangePrev}
-                    disable={!prevPage}
+                    disabled={!prevPage}
                 />
             </Link>
-            <Link className={styles.buttons} to={`/people/?page=${counterPage+1}`}>
-                <UIButton
-                    text='Next'
+            <Link to={`/people/?page=${counterPage+1}`} className={styles.buttons}>
+                <UiButton
+                    text="Next"
                     onClick={handleChangeNext}
-                    disable={!nextPage}
+                    disabled={!nextPage}
                 />
             </Link>
         </div>
-    );
-};
+    )
+}
 
 PeopleNavigation.propTypes = {
-    getResource: PropTypes.func,
+    getResponse: PropTypes.func,
     prevPage: PropTypes.string,
     nextPage: PropTypes.string,
-    counterPage: PropTypes.number
+    counterPage: PropTypes.number,
 }
+
 export default PeopleNavigation;
